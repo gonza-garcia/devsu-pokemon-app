@@ -1,0 +1,43 @@
+@use '../../styles/colors';
+
+.button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  border-radius: 0.2rem;
+  width: min(100% - 1rem, 5.5rem);
+  height: 2.5rem;
+  padding-inline: 1rem;
+
+  &:focus-visible {
+    outline: 2px solid rgb(18, 19, 18);
+  }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.lila {
+  color: white;
+  background-color: colors.$lila;
+
+  &:hover {
+    background-color: rgb(39, 39, 207);
+  }
+
+  .icon {
+    fill: white;
+    stroke: white;
+  }
+}
+
+.icon-solo {
+  &:hover .icon {
+    fill: rgb(39, 39, 207);
+  }
+}

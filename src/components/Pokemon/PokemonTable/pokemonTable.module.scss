@@ -1,0 +1,38 @@
+@use '../../../styles/colors';
+
+.pokemon-table {
+  margin-block: 1.2rem;
+
+  .table {
+    background-color: white;
+    width: 100%;
+
+    td, th {
+      border: 1px solid rgb(165, 165, 165);
+    }
+
+    th {
+      font-weight: 800;
+      padding: 0.5rem 0.2rem;
+    }
+
+    svg {
+      fill: colors.$lila;
+      height: 1.2rem;
+    }
+
+    .image {
+      max-height: 3rem;
+    }
+
+    .acciones {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr 1fr;
+
+      > button {
+        padding: 0;
+      }
+    }
+  }
+}

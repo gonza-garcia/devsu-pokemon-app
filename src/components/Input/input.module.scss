@@ -1,0 +1,55 @@
+.input-component {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  width: min(100% - 1rem, 20rem);
+
+  .label {
+    width: min(100% - 1rem, 6rem);
+    text-align: right;
+  }
+
+  .input-container {
+    background-color: white;
+    border: 2px solid rgb(165, 165, 165);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.2rem;
+    width: min(100% - 1rem, 12rem);
+    height: 2.5rem;
+    padding-inline: 0.8rem;
+
+    .icon {
+      fill: rgb(94, 93, 93);
+    }
+
+    .input {
+      all: unset;
+      text-align: left;
+      font-family: inherit;
+      font-size: 1rem;
+      color: rgb(59, 59, 59);
+      width: 100%;
+    }
+  }
+}
+
+.error {
+  .input-container {
+    border: 3px solid rgb(199, 34, 34);
+  }
+}
+
+.narrow {
+  width: min(100% - 1rem, 20rem);
+
+  .label {
+    width: min(100% - 1rem, 5rem);
+  }
+
+  .input-container {
+    width: min(100% - 1rem, 4rem);
+  }
+}

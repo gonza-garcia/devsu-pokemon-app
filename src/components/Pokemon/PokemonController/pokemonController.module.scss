@@ -1,0 +1,32 @@
+@use '../../../styles/colors';
+
+.pokemon-controller {
+  padding: 2rem;
+  position: relative;
+
+  .message {
+    font-size: 1.1rem;
+    font-weight: 800;
+    background-color: rgb(19, 38, 124);
+    border-radius: 0.3rem;
+    color: white;
+    padding: 0.5rem;
+
+    position: absolute;
+    top: 0; right: 2rem; left: 2rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    .narrow {
+      max-width: 10rem;
+    }
+  }
+}

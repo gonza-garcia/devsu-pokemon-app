@@ -1,0 +1,53 @@
+.pokemon-show-and-edit {
+  background-color: white;
+  padding: 2rem;
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .form-container {
+    display: grid;
+    place-items: center;
+    row-gap: 1.5rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    grid-template-areas: 
+      "image"
+      "input-name"
+      "input-image"
+      "input-attack"
+      "input-defense"
+      "controls";
+
+    .image {
+      grid-area: image;
+      max-width: 50%;
+      border: 2px solid black;
+    }
+    .input-name { grid-area: input-name;  }
+    .input-image { grid-area: input-image; }
+    .input-attack { grid-area: input-attack; }
+    .input-defense { grid-area: input-defense; }
+    .controls-container {
+      display: flex;
+      gap: 1rem;
+      grid-area: controls;
+    }
+  }
+
+  @media (min-width: 975px) {
+    .form-container {
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      grid-template-areas: 
+      "image input-name input-attack"
+      "image input-image input-defense"
+      "controls controls controls";
+
+      .image {
+        max-width: 100%;
+      }
+    }
+  }
+}
