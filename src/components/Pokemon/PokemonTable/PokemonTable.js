@@ -9,7 +9,7 @@ const PokemonTable = ({
   pokemons, searchKey, handleEditClick, handleDeleteClick,
 }) => {
   const filteredPokemons = (searchKey !== '')
-    ? pokemons.filter((pok) => pok?.name?.includes?.(searchKey))
+    ? pokemons.filter((pok) => pok?.name?.toLowerCase?.().includes?.(searchKey?.toLowerCase?.()))
     : pokemons;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const PokemonTable = ({
   }, [searchKey]);
 
   return (
-    <section className={styles['pokemon-table']}>
+    <section className={styles['pokemon-table']} data-testid="pokemon-table">
       {
         !!filteredPokemons.length && (
           <table

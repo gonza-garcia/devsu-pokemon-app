@@ -52,7 +52,7 @@ const PokemonShowAndEdit = ({
   };
 
   return (
-    <section className={styles['pokemon-show-and-edit']}>
+    <section className={styles['pokemon-show-and-edit']} data-testid="pokemon-show">
       <h2 className={styles.title}>{sectionTitle}</h2>
       <form className={styles['form-container']}>
         <img className={styles.image} src={formValues.image} alt="pokemon figure" />

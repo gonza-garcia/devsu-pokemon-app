@@ -15,7 +15,7 @@ const Input = ({
   const inputId = useId();
 
   return (
-    <div className={`${styles['input-component']} ${styles[inputVariant]} ${customClass}`}>
+    <div className={`${styles['input-component']} ${styles[inputVariant]} ${customClass}`} data-testid="inputComponent">
       {label && <label className={styles.label} htmlFor={inputId}>{`${label}:`}</label>}
 
       <div className={styles['input-container']}>

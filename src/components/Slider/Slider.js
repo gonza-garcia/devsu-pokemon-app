@@ -14,7 +14,7 @@ const Slider = ({
   const inputId = useId();
 
   return (
-    <div className={`${styles['slider-component']} ${styles[sliderVariant]} ${customClass}`}>
+    <div className={`${styles['slider-component']} ${styles[sliderVariant]} ${customClass}`} data-testid="sliderComponent">
       {label && <label className={styles.label} htmlFor={inputId}>{`${label}: ${value}`}</label>}
 
       <div className={styles['input-container']}>

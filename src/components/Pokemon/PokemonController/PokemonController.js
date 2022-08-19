@@ -64,7 +64,7 @@ const PokemonController = () => {
   };
 
   return (
-    <section className={styles['pokemon-controller']}>
+    <section className={styles['pokemon-controller']} data-testid="pokemon-controller">
       {message && <div className={styles.message}>{message}</div>}
       <div className={styles['search-container']}>
         <Input
