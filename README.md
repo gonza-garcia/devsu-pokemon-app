@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Notes about the project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can view the git repo [HERE](https://github.com/gonza-garcia/devsu-pokemon-app/).
+
+Or try the live version currently running [HERE](https://devsu-pokemon-app.herokuapp.com/).
 
 ## Available Scripts
 
