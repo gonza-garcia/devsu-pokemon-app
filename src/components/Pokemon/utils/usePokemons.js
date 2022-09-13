@@ -55,7 +55,7 @@ const usePokemons = (idAuthor) => {
     }
   }, [refreshPokemons]);
 
-  const deletePokemon = async (id) => {
+  const deletePokemon = useCallback(async (id) => {
     try {
       const { data: { success } } = await api.delete(`/${id}`);
 
@@ -66,7 +66,7 @@ const usePokemons = (idAuthor) => {
     } catch (error) {
       setMessage(error.message);
     }
-  };
+  }, [refreshPokemons]);
 
   useEffect(() => { refreshPokemons(); }, [refreshPokemons]);
 

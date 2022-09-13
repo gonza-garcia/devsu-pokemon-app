@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable */
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../Button/Button';
 import styles from './pokemonTable.module.scss';
@@ -8,13 +9,20 @@ import { ReactComponent as DeleteIcon } from '../../../assets/delete.svg';
 const PokemonTable = ({
   pokemons, searchKey, handleEditClick, handleDeleteClick,
 }) => {
+  console.count('Table: ', pokemons);
   const filteredPokemons = (searchKey !== '')
     ? pokemons.filter((pok) => pok?.name?.toLowerCase?.().includes?.(searchKey?.toLowerCase?.()))
     : pokemons;
 
-  useEffect(() => {
+  // const filteredPokemons = useMemo(() => (
+  //   (searchKey !== '')
+  //     ? pokemons.filter((pok) => pok?.name?.toLowerCase?.().includes?.(searchKey?.toLowerCase?.()))
+  //     : pokemons
+  // ), [searchKey, pokemons]);
 
-  }, [searchKey]);
+  // useEffect(() => {
+
+  // }, [searchKey]);
 
   return (
     <section className={styles['pokemon-table']} data-testid="pokemon-table">

@@ -26,7 +26,7 @@ const Slider = ({
           className={styles.input}
           type="range"
           value={value}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={handleChange}
           min="0"
           max="100"
           step="1"

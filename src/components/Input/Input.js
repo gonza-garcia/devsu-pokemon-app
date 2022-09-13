@@ -27,7 +27,7 @@ const Input = ({
           className={styles.input}
           type="text"
           value={value}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={handleChange}
           {...props}
         />
       </div>

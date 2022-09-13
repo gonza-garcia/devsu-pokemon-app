@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useCallback } from 'react';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -12,6 +13,7 @@ import styles from './pokemonController.module.scss';
 const PokemonController = () => {
   const [idAuthor, setIdAuthor] = useState(1);
   const [pokemons, executeAction, message] = usePokemons(idAuthor);
+  // const [pokemons, executeAction, message] = [[], () => {}, 'hola'];
   const [selectedPokemonId, setSelectedPokemonId] = useState('');
   const [selectedMode, setSelectedMode] = useState(MODES.none);
   const [inputValue, setInputValue] = useState('');
@@ -69,7 +71,7 @@ const PokemonController = () => {
       <div className={styles['search-container']}>
         <Input
           value={inputValue}
-          handleChange={setInputValue}
+          handleChange={(e) => setInputValue(e.target.value)}
           Icon={SearchIcon}
           variant="lila"
           placeholder="Buscar"
@@ -77,7 +79,7 @@ const PokemonController = () => {
         <Input
           label="Author ID"
           value={parseInt(idAuthor, 10) || 0}
-          handleChange={(value) => setIdAuthor(parseInt(value, 10))}
+          handleChange={(e) => setIdAuthor(parseInt(e.target.value, 10))}
           variant="narrow"
         />
         <Button

@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {
+  useState, useEffect, useCallback, useReducer,
+} from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../Input/Input';
 import Slider from '../../Slider/Slider';
@@ -8,16 +10,40 @@ import { ReactComponent as SaveIcon } from '../../../assets/save.svg';
 import { ReactComponent as CloseIcon } from '../../../assets/close.svg';
 import styles from './pokemonShowAndEdit.module.scss';
 
+const POKE_ACTIONS = {
+  CHANGE_INPUT: 'CHANGE_INPUT',
+  CHANGE_ALL: 'CHANGE_ALL',
+};
+
+const pokeReducer = (state, { type, payload }) => {
+  switch (type) {
+    case POKE_ACTIONS.CHANGE_INPUT:
+      return {
+        ...state, [payload.name]: payload.value,
+      };
+    case POKE_ACTIONS.CHANGE_ALL:
+      return {
+        ...payload,
+      };
+    default:
+      return { ...state };
+  }
+};
+
 const PokemonShowAndEdit = ({
   pokemon, mode, handleSaveClick, handleCancelClick,
 }) => {
-  const [formValues, setFormValues] = useState({
+  const INITIAL_STATE = {
     id: pokemon?.id || '',
     name: pokemon?.name || '',
     image: pokemon?.image || '',
     attack: pokemon?.attack || 0,
     defense: pokemon?.defense || 0,
-  });
+  };
+
+  // eslint-disable-next-line no-console
+  console.count('ShowAndEdit: ', pokemon);
+  const [formValues, dispatch] = useReducer(pokeReducer, INITIAL_STATE);
 
   const sectionTitle = (mode === MODES.new || mode === MODES.show) ? 'Nuevo Pokemon' : 'Editar Pokemon';
 
@@ -25,16 +51,27 @@ const PokemonShowAndEdit = ({
 
   const updateFormValues = useCallback(() => {
     if (mode === MODES.new || mode === MODES.none) {
-      setFormValues({
-        id: '',
-        name: '',
-        image: '',
-        attack: 0,
-        defense: 0,
+      // setFormValues({
+      //   id: '',
+      //   name: '',
+      //   image: '',
+      //   attack: 0,
+      //   defense: 0,
+      // });
+      dispatch({
+        type: POKE_ACTIONS.CHANGE_ALL,
+        payload: {
+          id: '',
+          name: '',
+          image: '',
+          attack: 0,
+          defense: 0,
+        },
       });
     }
     if (mode === MODES.edit) {
-      setFormValues({ ...formValues, ...pokemon });
+      // setFormValues((fValues) => ({ ...fValues, ...pokemon }));
+      dispatch({ type: POKE_ACTIONS.CHANGE_ALL, payload: pokemon });
     }
   }, [pokemon, mode]);
 
@@ -51,36 +88,47 @@ const PokemonShowAndEdit = ({
     if (!errorState) handleSaveClick(formValues);
   };
 
+  const handleInputChange = (e) => {
+    dispatch({
+      type: POKE_ACTIONS.CHANGE_INPUT,
+      payload: { name: e.target.name, value: e.target.value },
+    });
+  };
+
   return (
     <section className={styles['pokemon-show-and-edit']} data-testid="pokemon-show">
       <h2 className={styles.title}>{sectionTitle}</h2>
       <form className={styles['form-container']}>
         <img className={styles.image} src={formValues.image} alt="pokemon figure" />
         <Input
+          name="name"
           customClass={styles['input-name']}
           label="Nombre"
           value={formValues.name}
-          handleChange={(value) => setFormValues((f) => ({ ...f, name: value }))}
+          handleChange={handleInputChange}
           variant={errorState ? 'error' : ''}
         />
         <Input
+          name="image"
           customClass={styles['input-image']}
           label="Imagen"
           value={formValues.image}
-          handleChange={(value) => setFormValues((f) => ({ ...f, image: value }))}
+          handleChange={handleInputChange}
           variant={errorState ? 'error' : ''}
         />
         <Slider
+          name="attack"
           customClass={styles['input-attack']}
           label="Ataque"
           value={formValues.attack}
-          handleChange={(value) => setFormValues((f) => ({ ...f, attack: value }))}
+          handleChange={handleInputChange}
         />
         <Slider
+          name="defense"
           customClass={styles['input-defense']}
           label="Defensa"
           value={formValues.defense}
-          handleChange={(value) => setFormValues((f) => ({ ...f, defense: value }))}
+          handleChange={handleInputChange}
         />
         <div className={styles['controls-container']}>
           <Button
