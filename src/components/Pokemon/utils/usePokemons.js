@@ -1,6 +1,8 @@
+/* eslint-disable */
 import {
   useState, useEffect, useCallback,
 } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { POKEMONS_API_URL, ACTIONS } from './constants';
 
@@ -10,7 +12,14 @@ const api = axios.create({
 
 const NULL_POKEMONS = [];
 
+const getPokemons = () => (api.get('/', { params: { idAuthor } }));
+
 const usePokemons = (idAuthor) => {
+  const { data, error, isLoading } = useQuery(['pokemons'], getPokemons);
+  console.log('isLoading: ', isLoading);
+  console.log('error: ', error);
+  console.log('data: ', data);
+
   const [pokemons, setPokemons] = useState(NULL_POKEMONS);
   const [message, setMessage] = useState('');
 

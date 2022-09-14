@@ -1,0 +1,117 @@
+@import '../../styles/base.scss';
+
+.spinner {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0.9;
+
+    &--light-background {
+      background-color: $color-bbva-white;
+    }
+
+    &--medium-background {
+      background-color: $color-bbva-100;
+    }
+
+    &--dark-background {
+      background-color: $color-bbva-medium-blue;
+    }
+
+    &--navy-background {
+      background-color: $color-bbva-navy-blue;
+    }
+  }
+
+  &__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+	&__spinner {
+    border-radius: 50%;		
+		animation: spin 1.6s ease-in-out infinite;
+
+    &--dark-background {
+      background: $color-bbva-medium-blue;
+      background: linear-gradient(0deg, $color-bbva-medium-blue 60%, $color-bbva-dark-light-blue 80%, $color-bbva-white-aqua-light 95%, $color-bbva-aqua 100%);
+    }
+
+    &--navy-background {
+      background: $color-bbva-navy-blue;
+      background: linear-gradient(0deg, $color-bbva-navy-blue 60%, $color-bbva-dark-core-blue 80%, $color-bbva-white-aqua-light 95%, $color-bbva-aqua 100%);
+    }
+
+    &--large {
+      width: 64px;
+      height: 64px;
+    }
+
+    &--medium {
+      width: 48px;
+      height: 48px;
+    }
+
+    &--small {
+      width: 32px;
+      height: 32px;
+    }
+	}
+	
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	&__title {
+    padding-top: $spacing-xl;
+    font-family: $font-bbva-book-medium;
+	}
+
+  &__subtitle {
+    padding-top: $spacing-xs;
+    text-align: center;
+    padding: $spacing-s $spacing-l;
+    font-family: $font-bbva-book-normal;
+  }
+
+  &__title,
+  &__subtitle {
+    font-size: $font-size-s;
+
+    &--light-background,
+    &--medium-background {
+      color: $color-bbva-600;
+    }
+
+    &--dark-background,
+    &--navy-background {
+      color: $color-bbva-white;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-max-phone) {
+  .spinner {
+    &__spinner {
+      &--large,
+      &--small {
+        width: 48px;
+        height: 48px;
+      }  
+    }
+  }
+}

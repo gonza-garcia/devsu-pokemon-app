@@ -13,7 +13,6 @@ import styles from './pokemonController.module.scss';
 const PokemonController = () => {
   const [idAuthor, setIdAuthor] = useState(1);
   const [pokemons, executeAction, message] = usePokemons(idAuthor);
-  // const [pokemons, executeAction, message] = [[], () => {}, 'hola'];
   const [selectedPokemonId, setSelectedPokemonId] = useState('');
   const [selectedMode, setSelectedMode] = useState(MODES.none);
   const [inputValue, setInputValue] = useState('');

@@ -9,7 +9,6 @@ import { ReactComponent as DeleteIcon } from '../../../assets/delete.svg';
 const PokemonTable = ({
   pokemons, searchKey, handleEditClick, handleDeleteClick,
 }) => {
-  console.count('Table: ', pokemons);
   const filteredPokemons = (searchKey !== '')
     ? pokemons.filter((pok) => pok?.name?.toLowerCase?.().includes?.(searchKey?.toLowerCase?.()))
     : pokemons;
