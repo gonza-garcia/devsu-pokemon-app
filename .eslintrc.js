@@ -35,7 +35,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 0,
     'react/jsx-one-expression-per-line': 0,
     'react/function-component-definition': 0,
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     'no-mixed-spaces-and-tabs': 0,
     'max-len': [2, { code: 300, tabWidth: 4, ignoreUrls: true }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true, optionalDependencies: false, peerDependencies: false }],
